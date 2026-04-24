@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "generate-ogp": "node scripts/generate-ogp.mjs"
+    "generate-ogp": "node scripts/generate-ogp.mjs",
+    "deploy": "npm run build && npx wrangler pages deploy dist --project-name remember-dogs --branch production"
   },
   "dependencies": {
     "@twemoji/api": "^17.0.2",
