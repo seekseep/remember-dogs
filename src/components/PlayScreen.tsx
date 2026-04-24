@@ -45,10 +45,15 @@ export function PlayScreen({ state, dispatch }: Props) {
     const areaSize = 25;
     const dogSize = 8;
     const max = areaSize - dogSize;
-    return Array.from({ length: state.dogsInHouse }, () => ({
-      x: Math.random() * max,
-      y: Math.random() * max,
-    }));
+    return Array.from({ length: state.dogsInHouse }, () => {
+      const angle = Math.random() * Math.PI * 2;
+      return {
+        x: Math.random() * max,
+        y: Math.random() * max,
+        fleeDx: Math.cos(angle) * 80,
+        fleeDy: Math.sin(angle) * 80,
+      };
+    });
   }, [state.dogsInHouse, round]);
 
   // Revealing → correct/wrong after delay
@@ -205,6 +210,17 @@ export function PlayScreen({ state, dispatch }: Props) {
                     height: "8rem",
                     left: `${pos.x}rem`,
                     top: `${pos.y}rem`,
+                    ...(playPhase === "correct"
+                      ? { animation: `dog-shake 0.5s ease-in-out ${i * 0.05}s infinite` }
+                      : playPhase === "wrong"
+                      ? {
+                          "--flee-x": `${pos.x}rem`,
+                          "--flee-y": `${pos.y}rem`,
+                          "--flee-dx": `${pos.fleeDx}rem`,
+                          "--flee-dy": `${pos.fleeDy}rem`,
+                          animation: `dog-flee 0.4s ${i * 0.05}s ease-in forwards`,
+                        } as React.CSSProperties
+                      : {}),
                   }}
                 />
               ))}
