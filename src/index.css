@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+@theme {
+  --color-warm-bg: #f0e6d3;
+  --color-warm-dark: #4a3520;
+  --color-warm-mid: #7a6550;
+  --color-orange: #e07b39;
+  --color-orange-dark: #c96a2e;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+#root {
+  height: 100%;
+}
+
+@keyframes house-drop {
+  0% {
+    transform: translate(-50%, -100rem);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* 家が中央から上へ上がる（答え合わせ） */
+@keyframes house-rise {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-50%, -130%);
+  }
+}
+
+/* 初期犬が下から中央へ上がってくる */
+@keyframes dogs-rise {
+  0% {
+    transform: translate(-50%, 100rem);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* enter: 画面外から家（中央）へ。途中まで100%、家の近くで75%に縮小、中央で消える */
+@keyframes enter-left {
+  0% {
+    transform: translate(calc(-50% - 100rem), -50%) scale(1);
+    opacity: 1;
+  }
+  55% {
+    transform: translate(calc(-50% - 15rem), -50%) scale(1);
+    opacity: 1;
+  }
+  95% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes enter-right {
+  0% {
+    transform: translate(calc(-50% + 100rem), -50%) scale(1);
+    opacity: 1;
+  }
+  55% {
+    transform: translate(calc(-50% + 15rem), -50%) scale(1);
+    opacity: 1;
+  }
+  95% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* exit: 家から画面外へ。家から75%で出て、すぐ100%に戻る */
+@keyframes exit-left {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+  9% {
+    opacity: 0;
+  }
+  10% {
+    transform: translate(calc(-50% - 3rem), -50%) scale(0.5);
+    opacity: 1;
+  }
+  45% {
+    transform: translate(calc(-50% - 15rem), -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% - 100rem), -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes exit-right {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+  9% {
+    opacity: 0;
+  }
+  10% {
+    transform: translate(calc(-50% + 3rem), -50%) scale(0.5);
+    opacity: 1;
+  }
+  45% {
+    transform: translate(calc(-50% + 15rem), -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + 100rem), -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* タイマープログレスバー */
+@keyframes timer-shrink {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes timer-color {
+  0% {
+    background-color: #22c55e;
+  }
+  50% {
+    background-color: #eab308;
+  }
+  100% {
+    background-color: #ef4444;
+  }
+}
