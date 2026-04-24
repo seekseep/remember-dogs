@@ -32,7 +32,7 @@ export function ResultScreen({ state, dispatch }: Props) {
         </GameButton>
       </div>
       <div className="w-full max-w-182 min-h-22.5 flex items-center justify-center">
-        <AdSense slot="result-screen" />
+        <AdSense />
       </div>
     </div>
   );

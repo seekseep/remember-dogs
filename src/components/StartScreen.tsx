@@ -32,7 +32,7 @@ export function StartScreen({ dispatch }: Props) {
         {t.start}
       </GameButton>
       <div className="w-full max-w-182 min-h-22.5 flex items-center justify-center">
-        <AdSense slot="start-screen" />
+        <AdSense />
       </div>
     </div>
   );

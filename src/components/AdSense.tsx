@@ -1,12 +1,9 @@
 import { useEffect, useRef } from "react";
 
 const CLIENT_ID = import.meta.env.VITE_ADSENSE_CLIENT_ID as string;
+const SLOT_ID = import.meta.env.VITE_ADSENSE_SLOT_ID as string;
 
-interface Props {
-  slot?: string;
-}
-
-export function AdSense({ slot }: Props) {
+export function AdSense() {
   const adRef = useRef<HTMLModElement>(null);
   const pushed = useRef(false);
 
@@ -29,7 +26,7 @@ export function AdSense({ slot }: Props) {
       className="adsbygoogle"
       style={{ display: "block" }}
       data-ad-client={CLIENT_ID}
-      data-ad-slot={slot ?? import.meta.env.VITE_ADSENSE_SLOT_ID}
+      data-ad-slot={SLOT_ID}
       data-ad-format="auto"
       data-full-width-responsive="true"
     />
